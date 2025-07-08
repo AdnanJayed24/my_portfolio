@@ -11,7 +11,7 @@ const DynamicToaster = dynamic(() => import('@/components/ui/toaster-wrapper'), 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'green_heaven',
+  title: 'Adnan',
   description: 'Full-stack software engineer specializing in React, Node.js, and modern web technologies. Experienced in building scalable applications and leading development teams.',
   keywords: ['Software Engineer', 'Full Stack Developer', 'React', 'Node.js', 'JavaScript', 'TypeScript'],
   authors: [{ name: 'Muhammad Adnan Jayed' }],

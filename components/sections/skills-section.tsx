@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Code, Database, Wrench, Globe } from 'lucide-react';
 
@@ -10,56 +9,48 @@ const skillCategories = [
     title: "Frontend Development",
     icon: Code,
     skills: [
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "TypeScript", level: 80 },
-      { name: "JavaScript", level: 95 },
-      { name: "HTML/CSS", level: 90 },
-      { name: "Tailwind CSS", level: 85 }
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "HTML/CSS",
+      "Tailwind CSS"
     ]
   },
   {
     title: "Backend Development",
     icon: Database,
     skills: [
-      { name: "Node.js", level: 85 },
-      { name: "Express.js", level: 80 },
-      { name: "MongoDB", level: 75 },
-      { name: "RESTful APIs", level: 85 },
-      { name: "Python", level: 70 },
-      { name: "SQL", level: 75 }
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "RESTful APIs",
+      "Python",
+      "SQL"
     ]
   },
   {
     title: "Tools & Technologies",
     icon: Wrench,
     skills: [
-      { name: "Git/GitHub", level: 90 },
-      { name: "VS Code", level: 95 },
-      { name: "Figma", level: 70 },
-      { name: "Vercel", level: 80 }
+      "Git/GitHub",
+      "VS Code",
+      "Figma",
+      "Vercel"
     ]
   },
   {
     title: "Other Skills",
     icon: Globe,
     skills: [
-      { name: "Problem Solving", level: 90 },
-      { name: "Team Leadership", level: 85 },
-      { name: "Project Management", level: 80 },
-      { name: "Technical Writing", level: 75 },
-      { name: "Code Review", level: 85 },
-      { name: "Mentoring", level: 80 }
+      "Problem Solving",
+      "Team Leadership",
+      "Project Management",
+      "Technical Writing",
+      "Code Review",
+      "Mentoring"
     ]
   }
-];
-
-const certifications = [
-  "ICPC Regionals 2024 Participant",
-  "Full Stack Development Course",
-  "React Advanced Patterns",
-  "Node.js Best Practices",
-  "MongoDB Certified Developer"
 ];
 
 export function SkillsSection() {
@@ -71,11 +62,11 @@ export function SkillsSection() {
             Skills & Expertise
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A comprehensive overview of my technical skills and proficiency levels across different domains.
+            A comprehensive overview of my technical skills across various domains.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
@@ -87,15 +78,11 @@ export function SkillsSection() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
+                  <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm font-medium">{skill.name}</span>
-                          <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                        </div>
-                        <Progress value={skill.level} className="h-2" />
-                      </div>
+                      <Badge key={skillIndex} variant="outline" className="px-3 py-1 text-sm">
+                        {skill}
+                      </Badge>
                     ))}
                   </div>
                 </CardContent>
@@ -103,18 +90,6 @@ export function SkillsSection() {
             );
           })}
         </div>
-
-        {/* Certifications */}
-        {/* <div className="text-center">
-          <h3 className="text-2xl font-bold text-foreground mb-8">Certifications & Training</h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {certifications.map((cert, index) => (
-              <Badge key={index} variant="outline" className="px-4 py-2 text-sm">
-                {cert}
-              </Badge>
-            ))}
-          </div>
-        </div> */}
       </div>
     </section>
   );

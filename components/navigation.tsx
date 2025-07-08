@@ -6,11 +6,10 @@ import { Moon, Sun, Menu, X } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const navItems = [
-  { href: '#home', label: 'Home' },
   { href: '#experience', label: 'Experience' },
+  { href: '#achievements', label: 'Achievements' },
   { href: '#skills', label: 'Skills' },
   { href: '#projects', label: 'Projects' },
-  { href: '#achievements', label: 'Achievements' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -25,7 +24,6 @@ export function Navigation() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    // Check initial scroll position
     handleScroll();
     
     return () => {
@@ -48,7 +46,12 @@ export function Navigation() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-primary">Green Heaven</span>
+            <button
+              onClick={() => scrollToSection('#home')}
+              className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+            >
+              Adnan
+            </button>
           </div>
 
           {/* Desktop Navigation */}

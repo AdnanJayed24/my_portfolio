@@ -10,7 +10,7 @@ const experiences = [
     company: "Better E-Mart",
     position: "Software Engineer Intern",
     location: "Remote",
-    duration: "April 2025 - Present",
+    duration: "April 2025 - July 2025",
     description: "Developed and maintained frontend interfaces using Next.js and React Native, ensuring responsive and user-friendly design.",
     achievements: [
       "Implemented RESTful APIs with Node.js, Express.js, and MongoDB",
@@ -33,7 +33,7 @@ const experiences = [
       "– Conducted meticulous evaluation of student scripts, earning recognition as a top-performing evaluator for accuracy and fairness.",
       "Provided constructive feedback to improve student performance and comprehension across multiple subjects."
     ],
-    technologies: ["Teaching", "Assessment", "Evaluation"]
+    technologies: ["Teaching", "Evaluation"]
   }
 ];
 

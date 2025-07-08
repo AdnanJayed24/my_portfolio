@@ -1,10 +1,22 @@
 "use client";
 
 import { useState } from 'react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Trophy, Award, Calendar, Building2, Users, Code, BookOpen } from 'lucide-react';
+import {
+  Trophy,
+  Award,
+  Calendar,
+  Building2,
+  Users,
+  Code,
+} from 'lucide-react';
 
 const achievements = [
   {
@@ -16,32 +28,21 @@ const achievements = [
     description: "Participated in the International Collegiate Programming Contest Regional competition, demonstrating problem-solving skills and algorithmic thinking.",
     icon: Trophy,
     color: "text-yellow-600",
-    details: "Competed with a team of 3 members, solving complex algorithmic problems under time pressure. Gained valuable experience in competitive programming and teamwork."
+    proofLink: "https://icpc.global/ICPCID/NFWW6368F3D0"
   },
   {
     id: 2,
-    title: "Full Stack Development Certification",
-    category: "Certification",
-    date: "2024",
-    organization: "ICT Division",
-    description: "Completed learning full-stack development with ReactJs, C#, .NET, MySQL Server",
-    icon: Code,
-    color: "text-blue-600",
-    details: "Intensive 6-month program covering ReactJs, C#, .NET, MySQL Server"
+    title: "Expert",
+    category: "Achievement",
+    date: "2025-present",
+    organization: "Codeforces",
+    description: "Expert in Codeforces with a max rating of 1650",
+    icon: "codeforces",
+    color: "text-purple-600",
+    proofLink: "https://codeforces.com/profile/green_heaven"
   },
   {
     id: 3,
-    title: "Mobile App Development Certification",
-    category: "Certification",
-    date: "2024",
-    organization: "ICT Division",
-    description: "Completed learning Mobile App Development with Kotlin",
-    icon: Code,
-    color: "text-blue-600",
-    details: "Intensive 6-month program covering Kotlin"
-  },
-  {
-    id: 4,
     title: "Top 2% in Multiple CodeForces Contests",
     category: "Competition",
     date: "2023-present",
@@ -49,7 +50,18 @@ const achievements = [
     description: "Consistently ranked in the top 2% across multiple competitive programming contests on CodeForces platform.",
     icon: Award,
     color: "text-green-600",
-    details: "Demonstrated exceptional problem-solving abilities and algorithmic knowledge through consistent high performance in competitive programming contests."
+    proofLink: "https://codeforces.com/contests/with/green_heaven"
+  },
+  {
+    id: 4,
+    title: "4*",
+    category: "Achievement",
+    date: "2025-present",
+    organization: "CodeChef",
+    description: "4* in CodeChef with a max rating of 1872 and also top 200 in Bangladesh",
+    icon: Code,
+    color: "text-red-600",
+    proofLink: "https://www.codechef.com/users/green_heaven"
   },
   {
     id: 5,
@@ -60,39 +72,29 @@ const achievements = [
     description: "Secured top-50 in a CodeChef programming contest, showcasing superior algorithmic problem-solving skills.",
     icon: Trophy,
     color: "text-purple-600",
-    details: "45th among thousands of participants in a challenging algorithmic programming contest, solving complex problems efficiently."
+    proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank"
   },
   {
     id: 6,
-    title: "LUNE_NOIRE",
-    category: "Achievement",
+    title: "Mobile App Development Certification",
+    category: "Certification",
     date: "2024",
-    organization: "ICPC Regional",
-    description: "23rd in ICPC Asia Dhaka Regional Preliminary Contest 2024",
-    icon: Users,
-    color: "text-red-600",
-    details: "Successfully secured top 30 in ICPC Asia Dhaka Regional Preliminary Contest 2024 and top 100 ICPC Asia Dhaka Regional Contest 2024 in with good team collaboration"
-  },
-  {
-    id: 7,
-    title: "Expert",
-    category: "Codeforces",
-    date: "2025-present",
-    organization: "Codeforces",
-    description: "Expert in Codeforces",
-    icon: Code,
-    color: "text-purple-600",
-    details: "Got the Expert Rank in Codeforces with max rating of 1650 after several contests"
+    organization: "ICT Division",
+    description: "Completed learning Mobile App Development with Kotlin",
+    icon: Award,
+    color: "text-blue-600",
+    proofLink: "/Certificate.pdf"
   }
 ];
 
-const categories = ["All", "Competition", "Certification", "Achievement", "Codeforces"];
+const categories = ["All", "Competition", "Certification", "Achievement"];
 
 export function AchievementsSection() {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredAchievements = achievements.filter(achievement => 
-    selectedCategory === "All" || achievement.category === selectedCategory
+  const filteredAchievements = achievements.filter(
+    (achievement) =>
+      selectedCategory === "All" || achievement.category === selectedCategory
   );
 
   return (
@@ -124,66 +126,64 @@ export function AchievementsSection() {
         {/* Achievements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredAchievements.map((achievement) => {
-            const IconComponent = achievement.icon;
+            const isCodeforcesLogo = achievement.id === 2 || achievement.id === 3;
+            const isCodechefLogo = (achievement.id === 4 || achievement.id === 5);
             return (
-              <Dialog key={achievement.id}>
-                <DialogTrigger asChild>
-                  <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 group">
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-2">
-                        <IconComponent className={`w-8 h-8 ${achievement.color} group-hover:scale-110 transition-transform`} />
-                        <Badge variant="secondary" className="text-xs">
-                          {achievement.category}
-                        </Badge>
-                      </div>
-                      <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                        {achievement.title}
-                      </CardTitle>
-                      <CardDescription className="flex items-center space-x-4 text-sm">
-                        <div className="flex items-center space-x-1">
-                          <Calendar className="w-3 h-3" />
-                          <span>{achievement.date}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <Building2 className="w-3 h-3" />
-                          <span>{achievement.organization}</span>
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-sm text-muted-foreground line-clamp-3">
-                        {achievement.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </DialogTrigger>
-                <DialogContent className="max-w-md">
-                  <DialogHeader>
-                    <div className="flex items-center space-x-3 mb-2">
-                      <IconComponent className={`w-8 h-8 ${achievement.color}`} />
-                      <Badge variant="secondary">{achievement.category}</Badge>
+              <a
+                key={achievement.id}
+                href={achievement.proofLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-full"
+              >
+                <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
+                  <CardHeader>
+                    <div className="flex items-start justify-between mb-2">
+                      {isCodeforcesLogo ? (
+                        <img
+                          src="/codeforces.png"
+                          alt="Codeforces Logo"
+                          className="w-8 h-8 group-hover:scale-110 transition-transform"
+                        />
+                      ) : isCodechefLogo ? (
+                        <img
+                          src="/codechef.png"
+                          alt="CodeChef Logo"
+                          className="w-8 h-8 group-hover:scale-110 transition-transform"
+                        />
+                      ) : (
+                        <achievement.icon
+                          className={`w-8 h-8 ${achievement.color} group-hover:scale-110 transition-transform`}
+                        />
+                      )}
+                      <Badge variant="secondary" className="text-xs">
+                        {achievement.category}
+                      </Badge>
                     </div>
-                    <DialogTitle className="text-xl">{achievement.title}</DialogTitle>
-                    <DialogDescription className="flex items-center space-x-4 text-sm">
+                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                      {achievement.title}
+                    </CardTitle>
+                    <CardDescription className="flex items-center space-x-4 text-sm">
                       <div className="flex items-center space-x-1">
-                        <Calendar className="w-4 h-4" />
+                        <Calendar className="w-3 h-3" />
                         <span>{achievement.date}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <Building2 className="w-4 h-4" />
+                        <Building2 className="w-3 h-3" />
                         <span>{achievement.organization}</span>
                       </div>
-                    </DialogDescription>
-                  </DialogHeader>
-                  <div className="mt-4">
-                    <p className="text-muted-foreground leading-relaxed">
-                      {achievement.details}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="mt-auto">
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {achievement.description}
                     </p>
-                  </div>
-                </DialogContent>
-              </Dialog>
+                  </CardContent>
+                </Card>
+              </a>
             );
           })}
+
         </div>
       </div>
     </section>

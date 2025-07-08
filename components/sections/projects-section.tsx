@@ -9,22 +9,11 @@ import { ExternalLink, Github, Filter } from 'lucide-react';
 const projects = [
   {
     id: 1,
-    title: "TutorMate",
-    description: "A web-based tuition management system facilitating connections between tutors and students.",
-    image: "/tutor.png",
-    technologies: ["Next.js", "React", "Node.js", "MongoDB", "Tailwind CSS"],
-    category: "Full Stack",
-    demoUrl: "#",
-    githubUrl: "https://github.com/AdnanJayed24/tuition",
-    featured: true
-  },
-  {
-    id: 2,
     title: "Restaurant",
     description: "A practice project for a restaurant using MealDB",
     image: "/digidine.png",
     technologies: ["React", "TypeScript", "Redux"],
-    category: "Frontend",
+    category: "Full Stack",
     demoUrl: "https://digidenrestaurant.vercel.app/",
     githubUrl: "https://github.com/AdnanJayed24/Restaurant",
     featured: true

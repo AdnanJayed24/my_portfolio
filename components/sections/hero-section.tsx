@@ -14,16 +14,6 @@ export function HeroSection() {
     setIsVisible(true);
   }, []);
 
-  const handleDownloadResume = () => {
-    // Create a link to download the resume
-    const link = document.createElement('a');
-    link.href = '/image.png'; // Using the uploaded resume image
-    link.download = 'Muhammad_Adnan_Jayed_Resume.png';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
   <section
    id="home"
@@ -43,7 +33,7 @@ export function HeroSection() {
           }`}
         >
           <Avatar className="w-52 h-52 mx-auto md:mx-0 ring-6 ring-primary/20 ring-offset-4 ring-offset-background">
-            <AvatarImage src="/my_photo.jpg" alt="Muhammad Adnan Jayed" />
+            <AvatarImage src="/Adnan.jpg" alt="Muhammad Adnan Jayed" />
             <AvatarFallback className="text-2xl font-bold">
               green_heaven
             </AvatarFallback>
@@ -83,9 +73,9 @@ export function HeroSection() {
             }`}
           >
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Passionate software engineer with expertise in full-stack development,
-              specializing in React, Node.js, and modern web technologies. Experienced
-              in building scalable applications.
+              Full-stack software engineer with a strong Competitive Programming background 
+              and experience building scalable web apps using 
+              React, Node.js, and modern technologies.
             </p>
           </div>
 
@@ -156,7 +146,11 @@ export function HeroSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <SiCodeforces className="w-5 h-5" />
+                  <img
+                    src="/codeforces.png"
+                    alt="Codeforces Logo"
+                    className="w-5 h-5"
+                  />
                   <span className="sr-only">Codeforces</span>
                 </a>
               </Button>

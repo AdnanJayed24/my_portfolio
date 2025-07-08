@@ -20,9 +20,9 @@ export default function Home() {
       <DynamicNavigation />
       <DynamicHeroSection />
       <ExperienceSection />
+      <AchievementsSection />
       <SkillsSection />
       <ProjectsSection />
-      <AchievementsSection />
       <ContactSection />
       <Footer />
     </main>
