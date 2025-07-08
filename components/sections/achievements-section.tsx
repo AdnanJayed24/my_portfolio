@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import Image from 'next/image'; // Import Next.js Image component
 import {
   Card,
   CardContent,
@@ -14,11 +15,24 @@ import {
   Award,
   Calendar,
   Building2,
-  Users,
   Code,
 } from 'lucide-react';
 
-const achievements = [
+// Define types for achievement
+interface Achievement {
+  id: number;
+  title: string;
+  category: 'Competition' | 'Achievement' | 'Certification';
+  date: string;
+  organization: string;
+  description: string;
+  icon?: React.ComponentType<{ className?: string }>;
+  logo?: 'codeforces' | 'codechef';
+  color: string;
+  proofLink: string;
+}
+
+const achievements: Achievement[] = [
   {
     id: 1,
     title: "ICPC Regionals 2024",
@@ -37,7 +51,7 @@ const achievements = [
     date: "2025-present",
     organization: "Codeforces",
     description: "Expert in Codeforces with a max rating of 1650",
-    icon: "codeforces",
+    logo: "codeforces",
     color: "text-purple-600",
     proofLink: "https://codeforces.com/profile/green_heaven"
   },
@@ -48,7 +62,7 @@ const achievements = [
     date: "2023-present",
     organization: "CodeForces",
     description: "Consistently ranked in the top 2% across multiple competitive programming contests on CodeForces platform.",
-    icon: Award,
+    logo: "codeforces",
     color: "text-green-600",
     proofLink: "https://codeforces.com/contests/with/green_heaven"
   },
@@ -59,7 +73,7 @@ const achievements = [
     date: "2025-present",
     organization: "CodeChef",
     description: "4* in CodeChef with a max rating of 1872 and also top 200 in Bangladesh",
-    icon: Code,
+    logo: "codechef",
     color: "text-red-600",
     proofLink: "https://www.codechef.com/users/green_heaven"
   },
@@ -70,8 +84,8 @@ const achievements = [
     date: "2025-present",
     organization: "CodeChef",
     description: "Secured top-50 in a CodeChef programming contest, showcasing superior algorithmic problem-solving skills.",
-    icon: Trophy,
-    color: "text-purple-600",
+    logo: "codechef",
+    color: "text-purple",
     proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank"
   },
   {
@@ -84,18 +98,56 @@ const achievements = [
     icon: Award,
     color: "text-blue-600",
     proofLink: "/Certificate.pdf"
-  }
+  },
 ];
 
-const categories = ["All", "Competition", "Certification", "Achievement"];
+const categories = [
+    "All", 
+    "Competition", 
+    "Certification", 
+    "Achievement"
+] as const;
 
 export function AchievementsSection() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>("All");
 
-  const filteredAchievements = achievements.filter(
-    (achievement) =>
-      selectedCategory === "All" || achievement.category === selectedCategory
-  );
+const filteredAchievements = achievements.filter(
+  (achievement) => selectedCategory === 'All' || achievement.category === selectedCategory
+);
+
+  const renderIcon = (achievement: Achievement) => {
+    if (achievement.logo === 'codeforces') {
+      return (
+        <Image
+          src="/codeforces.png"
+          alt="Codeforces Logo"
+          width={32} // Specify width (w-8 = 32px)
+          height={32} // Specify height (h-8 = 32px)
+          className="group-hover:scale-110 transition-transform"
+        />
+      );
+    }
+    if (achievement.logo === 'codechef') {
+      return (
+        <Image
+          src="/codechef.png"
+          alt="CodeChef Logo"
+          width={32}
+          height={32}
+          className="group-hover:scale-110 transition-transform"
+        />
+      );
+    }
+    if (achievement.icon) {
+      const Icon = achievement.icon;
+      return (
+        <Icon
+          className={`w-8 h-8 ${achievement.color} group-hover:scale-110 transition-transform`}
+        />
+      );
+    }
+    return null;
+  };
 
   return (
     <section id="achievements" className="py-20">
@@ -125,65 +177,44 @@ export function AchievementsSection() {
 
         {/* Achievements Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredAchievements.map((achievement) => {
-            const isCodeforcesLogo = achievement.id === 2 || achievement.id === 3;
-            const isCodechefLogo = (achievement.id === 4 || achievement.id === 5);
-            return (
-              <a
-                key={achievement.id}
-                href={achievement.proofLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-full"
-              >
-                <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
-                  <CardHeader>
-                    <div className="flex items-start justify-between mb-2">
-                      {isCodeforcesLogo ? (
-                        <img
-                          src="/codeforces.png"
-                          alt="Codeforces Logo"
-                          className="w-8 h-8 group-hover:scale-110 transition-transform"
-                        />
-                      ) : isCodechefLogo ? (
-                        <img
-                          src="/codechef.png"
-                          alt="CodeChef Logo"
-                          className="w-8 h-8 group-hover:scale-110 transition-transform"
-                        />
-                      ) : (
-                        <achievement.icon
-                          className={`w-8 h-8 ${achievement.color} group-hover:scale-110 transition-transform`}
-                        />
-                      )}
-                      <Badge variant="secondary" className="text-xs">
-                        {achievement.category}
-                      </Badge>
+          {filteredAchievements.map((achievement) => (
+            <a
+              key={achievement.id}
+              href={achievement.proofLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="h-full"
+            >
+              <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-2">
+                    {renderIcon(achievement)}
+                    <Badge variant="secondary" className="text-xs">
+                      {achievement.category}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                    {achievement.title}
+                  </CardTitle>
+                  <CardDescription className="flex items-center space-x-4 text-sm">
+                    <div className="flex items-center space-x-1">
+                      <Calendar className="w-3 h-3" />
+                      <span>{achievement.date}</span>
                     </div>
-                    <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                      {achievement.title}
-                    </CardTitle>
-                    <CardDescription className="flex items-center space-x-4 text-sm">
-                      <div className="flex items-center space-x-1">
-                        <Calendar className="w-3 h-3" />
-                        <span>{achievement.date}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Building2 className="w-3 h-3" />
-                        <span>{achievement.organization}</span>
-                      </div>
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="mt-auto">
-                    <p className="text-sm text-muted-foreground line-clamp-3">
-                      {achievement.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </a>
-            );
-          })}
-
+                    <div className="flex items-center space-x-1">
+                      <Building2 className="w-3 h-3" />
+                      <span>{achievement.organization}</span>
+                    </div>
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="mt-auto">
+                  <p className="text-sm text-muted-foreground line-clamp-3">
+                    {achievement.description}
+                  </p>
+                </CardContent>
+              </Card>
+            </a>
+          ))}
         </div>
       </div>
     </section>

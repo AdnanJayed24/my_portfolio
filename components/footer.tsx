@@ -37,11 +37,10 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-foreground">Quick Links</h4>
             <nav className="flex flex-col space-y-2">
-              <a href="#home" className="text-muted-foreground hover:text-primary transition-colors">Home</a>
               <a href="#experience" className="text-muted-foreground hover:text-primary transition-colors">Experience</a>
+              <a href="#achievements" className="text-muted-foreground hover:text-primary transition-colors">Achievements</a>
               <a href="#skills" className="text-muted-foreground hover:text-primary transition-colors">Skills</a>
               <a href="#projects" className="text-muted-foreground hover:text-primary transition-colors">Projects</a>
-              <a href="#achievements" className="text-muted-foreground hover:text-primary transition-colors">Achievements</a>
               <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</a>
             </nav>
           </div>

@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ExternalLink, Github, Filter } from 'lucide-react';
+import Image from 'next/image'; // Import Next.js Image component
 
 const projects = [
   {
@@ -64,9 +65,11 @@ export function ProjectsSection() {
           {displayedProjects.map((project) => (
             <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 overflow-hidden">
               <div className="relative overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={400} // Set appropriate width
+                  height={192} // Set appropriate height (matches h-48 in original)
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

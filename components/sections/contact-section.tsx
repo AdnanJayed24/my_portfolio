@@ -60,7 +60,7 @@ export function ContactSection() {
             Get In Touch
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
+            I&apos;m always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
         </div>
 
@@ -68,10 +68,10 @@ export function ContactSection() {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Let's Connect</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Let&apos;s Connect</h3>
               <p className="text-muted-foreground mb-8">
                 Whether you have a project in mind, want to collaborate, or just want to say hello, 
-                I'd love to hear from you. Feel free to reach out through any of the channels below.
+                I&apos;d love to hear from you. Feel free to reach out through any of the channels below.
               </p>
             </div>
 
@@ -134,7 +134,7 @@ export function ContactSection() {
             <CardHeader>
               <CardTitle>Send Me a Message</CardTitle>
               <CardDescription>
-                Fill out the form below and I'll get back to you as soon as possible.
+                Fill out the form below and I&apos;ll get back to you as soon as possible.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -143,7 +143,7 @@ export function ContactSection() {
                 <Alert className="mb-6 border-green-200 bg-green-50">
                   <CheckCircle className="h-4 w-4 text-green-600" />
                   <AlertDescription className="text-green-800">
-                    Message sent successfully! I'll get back to you soon.
+                    Message sent successfully! I&apos;ll get back to you soon.
                   </AlertDescription>
                 </Alert>
               )}
@@ -213,7 +213,7 @@ export function ContactSection() {
                     rows={5} 
                     required 
                     disabled={isSubmitting}
-                    placeholder="Tell me about your project or just say hello..."
+                    placeholder=" Tell me about your project or just say hello..."
                   />
                 </div>
 
