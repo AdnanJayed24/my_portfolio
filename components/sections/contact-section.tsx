@@ -121,7 +121,7 @@ export function ContactSection() {
                   </a>
                 </Button>
                 <Button variant="outline" size="icon" asChild>
-                  <a href="https://linkedin.com/in/greenheaven24/" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.linkedin.com/in/greenheaven2002/" target="_blank" rel="noopener noreferrer">
                     <Linkedin className="w-5 h-5" />
                   </a>
                 </Button>
