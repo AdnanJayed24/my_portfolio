@@ -34,7 +34,7 @@ export function HeroSection() {
             }`}
           >
             <Avatar className="w-52 h-52 mx-auto md:mx-0 ring-6 ring-primary/20 ring-offset-4 ring-offset-background">
-              <AvatarImage src="/Adnan.jpg" alt="Muhammad Adnan Jayed" />
+              <AvatarImage src="/Adnan.png" alt="Muhammad Adnan Jayed" />
               <AvatarFallback className="text-2xl font-bold">
                 green_heaven
               </AvatarFallback>

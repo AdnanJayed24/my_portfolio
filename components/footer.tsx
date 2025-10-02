@@ -63,11 +63,8 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-sm text-center w-full">
               © {currentYear} Muhammad Adnan Jayed. All rights reserved.
-            </p>
-            <p className="text-muted-foreground text-sm flex items-center">
-              Made with <Heart className="w-4 h-4 mx-1 text-red-500" /> using Next.js & Tailwind CSS
             </p>
           </div>
         </div>

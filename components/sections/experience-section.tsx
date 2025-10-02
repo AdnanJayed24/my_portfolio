@@ -10,7 +10,7 @@ const experiences = [
     company: "Better E-Mart",
     position: "Software Engineer Intern",
     location: "Remote",
-    duration: "April 2025 - July 2025",
+    duration: "April 2025 - June 2025",
     description: "Developed and maintained frontend interfaces using Next.js and React Native, ensuring responsive and user-friendly design.",
     achievements: [
       "Implemented RESTful APIs with Node.js, Express.js, and MongoDB",

@@ -15,7 +15,6 @@ import {
   Award,
   Calendar,
   Building2,
-  Code,
 } from 'lucide-react';
 
 // Define types for achievement
@@ -27,7 +26,7 @@ interface Achievement {
   organization: string;
   description: string;
   icon?: React.ComponentType<{ className?: string }>;
-  logo?: 'codeforces' | 'codechef';
+  logo?: 'codeforces' | 'codechef' | 'leetcode';
   color: string;
   proofLink: string;
 }
@@ -50,13 +49,35 @@ const achievements: Achievement[] = [
     category: "Achievement",
     date: "2025-present",
     organization: "Codeforces",
-    description: "Expert in Codeforces with a max rating of 1650",
+    description: "Expert in Codeforces with a max rating of 1869",
     logo: "codeforces",
     color: "text-purple-600",
     proofLink: "https://codeforces.com/profile/green_heaven"
   },
   {
     id: 3,
+    title: "Guardian",
+    category: "Achievement",
+    date: "2025-present",
+    organization: "LeetCode",
+    description: "Guardian in LeetCode with a max rating of 2190",
+    logo: "leetcode",
+    color: "text-purple-600",
+    proofLink: "https://leetcode.com/u/green_heaven/"
+  },
+  {
+    id: 4,
+    title: "4*",
+    category: "Achievement",
+    date: "2025-present",
+    organization: "CodeChef",
+    description: "4* in CodeChef with a max rating of 1949 and also top 200 in Bangladesh",
+    logo: "codechef",
+    color: "text-red-600",
+    proofLink: "https://www.codechef.com/users/green_heaven"
+  },
+  {
+    id: 5,
     title: "Top 2% in Multiple CodeForces Contests",
     category: "Competition",
     date: "2023-present",
@@ -67,18 +88,7 @@ const achievements: Achievement[] = [
     proofLink: "https://codeforces.com/contests/with/green_heaven"
   },
   {
-    id: 4,
-    title: "4*",
-    category: "Achievement",
-    date: "2025-present",
-    organization: "CodeChef",
-    description: "4* in CodeChef with a max rating of 1872 and also top 200 in Bangladesh",
-    logo: "codechef",
-    color: "text-red-600",
-    proofLink: "https://www.codechef.com/users/green_heaven"
-  },
-  {
-    id: 5,
+    id: 6,
     title: "Top-50 in CodeChef Contest",
     category: "Competition",
     date: "2025-present",
@@ -89,16 +99,27 @@ const achievements: Achievement[] = [
     proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank"
   },
   {
-    id: 6,
-    title: "Mobile App Development Certification",
-    category: "Certification",
-    date: "2024",
-    organization: "ICT Division",
-    description: "Completed learning Mobile App Development with Kotlin",
-    icon: Award,
-    color: "text-blue-600",
-    proofLink: "/Certificate.pdf"
+    id: 7,
+    title: "1st in the Country",
+    category: "Competition",
+    date: "2025-present",
+    organization: "CodeChef",
+    description: "Ranked 1st in Bangladesh (top 3.4% in the world) in CodeChef Starters 200 (Div 2)",
+    logo: "codechef",
+    color: "text-purple",
+    proofLink: "https://www.codechef.com/rankings/START200B?filterBy=Country%3DBangladesh&itemsPerPage=100&order=asc&page=1&sortBy=rank"
   },
+  {
+    id: 8,
+    title: "Top 10 in the World",
+    category: "Competition",
+    date: "2025-present",
+    organization: "LeetCode",
+    description: "Ranked 9th in the world (top 0.02% in the world) in Biweekly Contest 164",
+    logo: "leetcode",
+    color: "text-purple",
+    proofLink: "https://leetcode.com/contest/biweekly-contest-164/ranking/?region=global_v2"
+  }
 ];
 
 const categories = [
@@ -132,6 +153,17 @@ const filteredAchievements = achievements.filter(
         <Image
           src="/codechef.png"
           alt="CodeChef Logo"
+          width={32}
+          height={32}
+          className="group-hover:scale-110 transition-transform"
+        />
+      );
+    }
+    if (achievement.logo === 'leetcode') {
+      return (
+        <Image
+          src="/leetcode.png"
+          alt="LeetCode Logo"
           width={32}
           height={32}
           className="group-hover:scale-110 transition-transform"
