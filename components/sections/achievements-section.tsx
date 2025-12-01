@@ -45,6 +45,17 @@ const achievements: Achievement[] = [
   },
   {
     id: 2,
+    title: "Top 50 in SRBD Code Contest 2025",
+    category: "Competition",
+    date: "2025-present",
+    organization: "Samsung R&D Institute Bangladesh",
+    description: "Ranked 46th in the first round of SRBD Code Contest 2025",
+    icon: Trophy,
+    color: "text-purple",
+    proofLink: "https://www.hackerrank.com/contests/srbd-code-contest-2025-round-1/leaderboard"
+  },
+  {
+    id: 3,
     title: "Expert",
     category: "Achievement",
     date: "2025-present",
@@ -55,7 +66,7 @@ const achievements: Achievement[] = [
     proofLink: "https://codeforces.com/profile/green_heaven"
   },
   {
-    id: 3,
+    id: 4,
     title: "Guardian",
     category: "Achievement",
     date: "2025-present",
@@ -66,7 +77,7 @@ const achievements: Achievement[] = [
     proofLink: "https://leetcode.com/u/green_heaven/"
   },
   {
-    id: 4,
+    id: 5,
     title: "4*",
     category: "Achievement",
     date: "2025-present",
@@ -77,7 +88,7 @@ const achievements: Achievement[] = [
     proofLink: "https://www.codechef.com/users/green_heaven"
   },
   {
-    id: 5,
+    id: 6,
     title: "Top 2% in Multiple CodeForces Contests",
     category: "Competition",
     date: "2023-present",
@@ -88,7 +99,7 @@ const achievements: Achievement[] = [
     proofLink: "https://codeforces.com/contests/with/green_heaven"
   },
   {
-    id: 6,
+    id: 7,
     title: "Top-50 in CodeChef Contest",
     category: "Competition",
     date: "2025-present",
@@ -99,7 +110,7 @@ const achievements: Achievement[] = [
     proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank"
   },
   {
-    id: 7,
+    id: 8,
     title: "1st in the Country",
     category: "Competition",
     date: "2025-present",
@@ -110,7 +121,7 @@ const achievements: Achievement[] = [
     proofLink: "https://www.codechef.com/rankings/START200B?filterBy=Country%3DBangladesh&itemsPerPage=100&order=asc&page=1&sortBy=rank"
   },
   {
-    id: 8,
+    id: 9,
     title: "Top 10 in the World",
     category: "Competition",
     date: "2025-present",
