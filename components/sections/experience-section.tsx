@@ -8,6 +8,29 @@ import Link from "next/link";
 const experiences = [
   {
     id: 1,
+    company: "Intellectify.io",
+    position: "Software Engineer Intern",
+    location: "Remote",
+    duration: "January 2026 - Present",
+    description:
+      "Developed and maintained frontend interfaces using React Native, ensuring responsive and user-friendly design.",
+    achievements: [
+      "Employed Git and GitHub for version control",
+      "Established streamlined workflows and code review processes",
+    ],
+    technologies: [
+      "React Native",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Django",
+      "Git",
+      "GitHub",
+    ],
+    certificate: null, 
+  },
+  {
+    id: 2,
     company: "Better E-Mart",
     position: "Software Engineer Intern",
     location: "Remote",
@@ -32,11 +55,11 @@ const experiences = [
     certificate: "\Better Certificate.pdf", 
   },
   {
-    id: 2,
+    id: 3,
     company: "Echologyx Ltd",
     position: "Industrial Attachment",
     location: "Chattongram, Bangladesh",
-    duration: "November 2025",
+    duration: "Septenber 2025 - November 2025",
     description:
       "Completed a focused two-week industrial attachment covering A/B testing methodologies and evaluation metrics for product experiments.",
     achievements: [
@@ -54,7 +77,7 @@ const experiences = [
     certificate: null,
   },
   {
-    id: 3,
+    id: 4,
     company: "Udvash Academic and Admission Care",
     position: "Senior Instructor",
     location: "Chattogram, Bangladesh",

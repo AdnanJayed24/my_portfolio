@@ -23,6 +23,8 @@ const skillCategories = [
     skills: [
       "Node.js",
       "Express.js",
+      "Django",
+      "postgreSQL",
       "MongoDB",
       "RESTful APIs",
       "Python",
