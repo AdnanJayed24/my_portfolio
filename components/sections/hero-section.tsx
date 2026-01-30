@@ -88,7 +88,7 @@ export function HeroSection() {
             >
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <Button size="lg" asChild className="group">
-                  <a href="/MuhammadAdnanJayed.pdf" download>
+                  <a href="/AdnanJayed_Resume.pdf" download>
                     <Download className="w-4 h-4 mr-2 group-hover:animate-bounce" />
                     Download Resume
                   </a>
