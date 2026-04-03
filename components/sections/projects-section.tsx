@@ -14,11 +14,33 @@ const projects = [
     description: "A practice project for a restaurant using MealDB",
     image: "/digidine.png",
     technologies: ["React", "TypeScript", "Redux"],
-    category: "Full Stack",
+    category: "Frontend",
     demoUrl: "https://digidenrestaurant.vercel.app/",
     githubUrl: "https://github.com/AdnanJayed24/Restaurant",
     featured: true
-  }
+  },
+  {
+    id: 2,
+    title: "EchoChat",
+    description: "A practice project for a chat application",
+    image: "/echochat.png",
+    technologies: ["React", "Node.js", "Express.js", "WebSockets", "PostgreSQL", "JWT"],
+    category: "Full Stack",
+    demoUrl: "https://chat-2iuj.vercel.app/",
+    githubUrl: "https://github.com/AdnanJayed24/Chat",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "Url-shortener",
+    description: "A practice project for a URL shortening service",
+    image: "/url-shortener.png",
+    technologies: ["Next.js", "Node.js", "Express.js", "Tailwind CSS", "JWT"],
+    category: "Full Stack",
+    demoUrl: "https://url-shortener-8g2i.vercel.app/",
+    githubUrl: "https://github.com/AdnanJayed24/url-Shortener",
+    featured: true
+  },
 ];
 
 const categories = ["All", "Full Stack", "Frontend", "Backend"];
