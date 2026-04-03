@@ -11,7 +11,7 @@ const experiences = [
     company: "Intellectify.io",
     position: "Software Engineer Intern",
     location: "Remote",
-    duration: "January 2026 - Present",
+    duration: "January 2026 - March 2026",
     description:
       "Developed and maintained frontend interfaces using React Native, ensuring responsive and user-friendly design.",
     achievements: [
