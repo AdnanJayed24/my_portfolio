@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef } from 'react';
+import { motion, useInView, useScroll, useSpring } from 'framer-motion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Building2, Calendar, MapPin, FileDown } from 'lucide-react';
@@ -18,16 +20,8 @@ const experiences = [
       "Employed Git and GitHub for version control",
       "Established streamlined workflows and code review processes",
     ],
-    technologies: [
-      "React Native",
-      "Node.js",
-      "Express.js",
-      "PostgreSQL",
-      "Django",
-      "Git",
-      "GitHub",
-    ],
-    certificate: null, 
+    technologies: ["React Native", "Node.js", "Express.js", "PostgreSQL", "Django", "Git", "GitHub"],
+    certificate: null,
   },
   {
     id: 2,
@@ -43,37 +37,22 @@ const experiences = [
       "Employed Git and GitHub for version control",
       "Established streamlined workflows and code review processes",
     ],
-    technologies: [
-      "Next.js",
-      "React Native",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "Git",
-      "GitHub",
-    ],
-    certificate: "\Better Certificate.pdf", 
+    technologies: ["Next.js", "React Native", "Node.js", "Express.js", "MongoDB", "Git", "GitHub"],
+    certificate: "\Better Certificate.pdf",
   },
   {
     id: 3,
     company: "Echologyx Ltd",
     position: "Industrial Attachment",
     location: "Chattongram, Bangladesh",
-    duration: "Septenber 2025 - November 2025",
+    duration: "September 2025 - November 2025",
     description:
       "Completed a focused two-week industrial attachment covering A/B testing methodologies and evaluation metrics for product experiments.",
     achievements: [
-      "Collaborated in a small team to design and develop Echointerview — an AI-based recruitment system using Next.js, implementing interview flows and basic candidate evaluation components.",
-      " Presented the group project outcomes and learned practical deployment/testing workflows used in product teams."
+      "Collaborated in a small team to design and develop Echointerview — an AI-based recruitment system using Next.js.",
+      "Presented the group project outcomes and learned practical deployment/testing workflows used in product teams.",
     ],
-    technologies: [
-      "Next.js",
-      "React",
-      "TailwindCSS",
-      "REST API",
-      "GitHub",
-      "CI/CD"
-    ],
+    technologies: ["Next.js", "React", "TailwindCSS", "REST API", "GitHub", "CI/CD"],
     certificate: null,
   },
   {
@@ -85,104 +64,195 @@ const experiences = [
     description:
       "Provided comprehensive instruction in Mathematics, Physics, Chemistry, and ICT, adapting materials to diverse learning styles.",
     achievements: [
-      "Designed and delivered comprehensive instruction in Mathematics, Physics, Chemistry, and ICT, adapting materials to diverse learning styles.",
-      "Authored detailed solution sheets and structured marking schemes for ICT assessments, enhancing clarity and consistency in evaluation.",
-      "Conducted meticulous evaluation of student scripts, earning recognition as a top-performing evaluator for accuracy and fairness.",
-      "Provided constructive feedback to improve student performance and comprehension across multiple subjects.",
+      "Designed and delivered comprehensive instruction across multiple subjects.",
+      "Authored detailed solution sheets and structured marking schemes for ICT assessments.",
+      "Conducted meticulous evaluation of student scripts, earning recognition as a top-performing evaluator.",
+      "Provided constructive feedback to improve student performance and comprehension.",
     ],
     technologies: ["Teaching", "Evaluation"],
   },
 ];
 
-export function ExperienceSection() {
+/* ─── Animated section heading ─── */
+function SectionHeading({ title, subtitle }: { title: string; subtitle: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
   return (
-    <section id="experience" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Professional Experience
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            My journey in software development and education, building impactful solutions and sharing knowledge.
-          </p>
-        </div>
+    <motion.div
+      ref={ref}
+      className="text-center mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ type: "spring", damping: 20, stiffness: 100 }}
+    >
+      <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{title}</h2>
+      <motion.div
+        className="h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 mb-4"
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : {}}
+        transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+      />
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
+    </motion.div>
+  );
+}
+
+/* ─── Single experience card ─── */
+function ExperienceCard({
+  experience,
+  index,
+}: {
+  experience: (typeof experiences)[number];
+  index: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isLeft = index % 2 === 0;
+
+  return (
+    <div
+      ref={ref}
+      className={`relative flex items-center mb-12 ${isLeft ? "md:flex-row" : "md:flex-row-reverse"}`}
+    >
+      {/* Animated timeline dot */}
+      <motion.div
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 w-5 h-5 rounded-full z-10"
+        style={{
+          background: "linear-gradient(135deg, #8b5cf6, #06b6d4)",
+          border: "3px solid hsl(var(--background))",
+        }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={isInView ? { scale: 1, opacity: 1 } : {}}
+        transition={{ type: "spring", delay: 0.15, stiffness: 200 }}
+      />
+      {/* Dot glow */}
+      <motion.div
+        className="absolute left-4 md:left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-violet-500/25 blur-md z-0"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={isInView ? { scale: 1, opacity: 1 } : {}}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      />
+
+      {/* Card */}
+      <motion.div
+        className={`ml-12 md:ml-0 md:w-1/2 ${isLeft ? "md:pr-8" : "md:pl-8"}`}
+        initial={{ opacity: 0, x: -70 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ type: "spring", damping: 22, stiffness: 100, delay: 0.1 }}
+      >
+        <motion.div whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 300 }}>
+          <Card className="card-glow border-border/60 overflow-hidden">
+            {/* Top gradient accent */}
+            <div className="h-0.5 bg-gradient-to-r from-violet-500 via-cyan-400 to-indigo-500" />
+            <CardHeader>
+              <div className="flex items-start justify-between mb-2">
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <Calendar className="w-3.5 h-3.5 text-violet-500" />
+                  <span>{experience.duration}</span>
+                </div>
+                {experience.certificate && (
+                  <Link
+                    href={experience.certificate}
+                    download
+                    className="flex items-center gap-1 text-violet-500 text-sm opacity-70 hover:opacity-100 transition-opacity"
+                  >
+                    <FileDown className="w-4 h-4" />
+                    <span>Certificate</span>
+                  </Link>
+                )}
+              </div>
+
+              <CardTitle className="text-xl mb-1">{experience.position}</CardTitle>
+
+              <CardDescription className="flex items-center flex-wrap gap-3">
+                <span className="flex items-center gap-1">
+                  <Building2 className="w-3.5 h-3.5 text-cyan-500" />
+                  {experience.company}
+                </span>
+                <span className="flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-violet-400" />
+                  {experience.location}
+                </span>
+              </CardDescription>
+            </CardHeader>
+
+            <CardContent>
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                {experience.description}
+              </p>
+
+              <div className="mb-4">
+                <h4 className="font-semibold text-sm mb-2">Key Achievements:</h4>
+                <ul className="space-y-1 text-sm text-muted-foreground">
+                  {experience.achievements.map((a, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-violet-500 mt-0.5 flex-shrink-0">▸</span>
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {experience.technologies.map((tech) => (
+                  <motion.div
+                    key={tech}
+                    whileHover={{ scale: 1.08, y: -1 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                  >
+                    <Badge
+                      variant="secondary"
+                      className="text-xs hover:bg-violet-500/15 hover:text-violet-600 dark:hover:text-violet-400 transition-colors"
+                    >
+                      {tech}
+                    </Badge>
+                  </motion.div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
+/* ─── Section ─── */
+export function ExperienceSection() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start 90%", "end 10%"],
+  });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 80, damping: 25 });
+
+  return (
+    <section id="experience" className="py-20 relative overflow-hidden">
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-muted/20" />
+      <div className="absolute inset-0 grid-bg opacity-50" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeading
+          title="Professional Experience"
+          subtitle="My journey in software development and education, building impactful solutions and sharing knowledge."
+        />
 
         <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            <div className="absolute left-4 md:left-1/2 transform md:-translate-x-px top-0 bottom-0 w-0.5 bg-border"></div>
+          <div ref={timelineRef} className="relative">
+            {/* Static grey track */}
+            <div className="absolute left-4 md:left-1/2 -translate-x-px top-0 bottom-0 w-0.5 bg-border" />
+            {/* Animated gradient fill */}
+            <motion.div
+              className="absolute left-4 md:left-1/2 -translate-x-px top-0 bottom-0 w-0.5 origin-top"
+              style={{
+                scaleY,
+                background: "linear-gradient(180deg, #8b5cf6, #06b6d4, #6366f1)",
+              }}
+            />
 
-            {experiences.map((experience, index) => (
-              <div
-                key={experience.id}
-                className={`relative flex items-center mb-12 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                <div className="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background z-10"></div>
-
-                <div
-                  className={`ml-12 md:ml-0 md:w-1/2 ${
-                    index % 2 === 0 ? "md:pr-8" : "md:pl-8"
-                  }`}
-                >
-                  <Card className="hover:shadow-lg transition-shadow duration-300">
-                    <CardHeader>
-                      <div className="flex items-start justify-between mb-2">
-                        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-                          <Calendar className="w-4 h-4" />
-                          <span>{experience.duration}</span>
-                        </div>
-
-                        {/* Certificate Button */}
-                        {experience.certificate && (
-                          <Link
-                            href={experience.certificate}
-                            download
-                            className="flex items-center gap-1 text-primary text-sm opacity-70 hover:opacity-100 transition-opacity"
-                          >
-                            <FileDown className="w-4 h-4" />
-                            <span>Certificate</span>
-                          </Link>
-                        )}
-                      </div>
-
-                      <CardTitle className="text-xl mb-1">{experience.position}</CardTitle>
-
-                      <CardDescription className="flex items-center space-x-4">
-                        <div className="flex items-center space-x-1">
-                          <Building2 className="w-4 h-4" />
-                          <span>{experience.company}</span>
-                        </div>
-                        <div className="flex items-center space-x-1">
-                          <MapPin className="w-4 h-4" />
-                          <span>{experience.location}</span>
-                        </div>
-                      </CardDescription>
-                    </CardHeader>
-
-                    <CardContent>
-                      <p className="text-muted-foreground mb-4">{experience.description}</p>
-
-                      <div className="mb-4">
-                        <h4 className="font-semibold mb-2">Key Achievements:</h4>
-                        <ul className="list-disc list-inside space-y-1 text-sm text-muted-foreground">
-                          {experience.achievements.map((achievement, idx) => (
-                            <li key={idx}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="flex flex-wrap gap-2">
-                        {experience.technologies.map((tech) => (
-                          <Badge key={tech} variant="secondary" className="text-xs">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
+            {experiences.map((exp, i) => (
+              <ExperienceCard key={exp.id} experience={exp} index={i} />
             ))}
           </div>
         </div>

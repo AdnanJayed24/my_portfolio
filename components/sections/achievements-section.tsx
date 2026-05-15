@@ -1,23 +1,12 @@
 "use client";
 
-import { useState } from 'react';
-import Image from 'next/image'; // Import Next.js Image component
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle
-} from '@/components/ui/card';
+import { useState, useRef } from 'react';
+import Image from 'next/image';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import {
-  Trophy,
-  Award,
-  Calendar,
-  Building2,
-} from 'lucide-react';
+import { Trophy, Calendar, Building2 } from 'lucide-react';
 
-// Define types for achievement
 interface Achievement {
   id: number;
   title: string;
@@ -40,19 +29,19 @@ const achievements: Achievement[] = [
     organization: "ACM-ICPC",
     description: "Participated in the International Collegiate Programming Contest Regional competition, demonstrating problem-solving skills and algorithmic thinking.",
     icon: Trophy,
-    color: "text-yellow-600",
-    proofLink: "https://icpc.global/ICPCID/NFWW6368F3D0"
+    color: "text-yellow-500",
+    proofLink: "https://icpc.global/ICPCID/NFWW6368F3D0",
   },
   {
     id: 2,
     title: "Top 50 in SRBD Code Contest 2025",
     category: "Competition",
-    date: "2025-present",
+    date: "2025",
     organization: "Samsung R&D Institute Bangladesh",
-    description: "Ranked 46th in the first round of SRBD Code Contest 2025",
+    description: "Ranked 46th in the first round of SRBD Code Contest 2025.",
     icon: Trophy,
-    color: "text-purple",
-    proofLink: "https://www.hackerrank.com/contests/srbd-code-contest-2025-round-1/leaderboard"
+    color: "text-purple-500",
+    proofLink: "https://www.hackerrank.com/contests/srbd-code-contest-2025-round-1/leaderboard",
   },
   {
     id: 3,
@@ -60,10 +49,10 @@ const achievements: Achievement[] = [
     category: "Achievement",
     date: "2025-present",
     organization: "Codeforces",
-    description: "Expert in Codeforces with a max rating of 1869",
+    description: "Expert in Codeforces with a max rating of 1869.",
     logo: "codeforces",
     color: "text-purple-600",
-    proofLink: "https://codeforces.com/profile/green_heaven"
+    proofLink: "https://codeforces.com/profile/green_heaven",
   },
   {
     id: 4,
@@ -71,21 +60,21 @@ const achievements: Achievement[] = [
     category: "Achievement",
     date: "2025-present",
     organization: "LeetCode",
-    description: "Guardian in LeetCode with a max rating of 2190",
+    description: "Guardian in LeetCode with a max rating of 2190.",
     logo: "leetcode",
-    color: "text-purple-600",
-    proofLink: "https://leetcode.com/u/green_heaven/"
+    color: "text-orange-500",
+    proofLink: "https://leetcode.com/u/green_heaven/",
   },
   {
     id: 5,
-    title: "4*",
+    title: "4★",
     category: "Achievement",
     date: "2025-present",
     organization: "CodeChef",
-    description: "4* in CodeChef with a max rating of 1949 and also top 200 in Bangladesh",
+    description: "4★ in CodeChef with a max rating of 1949 and also top 200 in Bangladesh.",
     logo: "codechef",
-    color: "text-red-600",
-    proofLink: "https://www.codechef.com/users/green_heaven"
+    color: "text-red-500",
+    proofLink: "https://www.codechef.com/users/green_heaven",
   },
   {
     id: 6,
@@ -95,170 +84,212 @@ const achievements: Achievement[] = [
     organization: "CodeForces",
     description: "Consistently ranked in the top 2% across multiple competitive programming contests on CodeForces platform.",
     logo: "codeforces",
-    color: "text-green-600",
-    proofLink: "https://codeforces.com/contests/with/green_heaven"
+    color: "text-green-500",
+    proofLink: "https://codeforces.com/contests/with/green_heaven",
   },
   {
     id: 7,
     title: "Top-50 in CodeChef Contest",
     category: "Competition",
-    date: "2025-present",
+    date: "2025",
     organization: "CodeChef",
     description: "Secured top-50 in a CodeChef programming contest, showcasing superior algorithmic problem-solving skills.",
     logo: "codechef",
-    color: "text-purple",
-    proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank"
+    color: "text-purple-500",
+    proofLink: "https://www.codechef.com/rankings/START183B?itemsPerPage=100&order=asc&page=1&search=green_heaven&sortBy=rank",
   },
   {
     id: 8,
     title: "1st in the Country",
     category: "Competition",
-    date: "2025-present",
+    date: "2025",
     organization: "CodeChef",
-    description: "Ranked 1st in Bangladesh (top 3.4% in the world) in CodeChef Starters 200 (Div 2)",
+    description: "Ranked 1st in Bangladesh (top 3.4% in the world) in CodeChef Starters 200 (Div 2).",
     logo: "codechef",
-    color: "text-purple",
-    proofLink: "https://www.codechef.com/rankings/START200B?filterBy=Country%3DBangladesh&itemsPerPage=100&order=asc&page=1&sortBy=rank"
+    color: "text-yellow-500",
+    proofLink: "https://www.codechef.com/rankings/START200B?filterBy=Country%3DBangladesh&itemsPerPage=100&order=asc&page=1&sortBy=rank",
   },
   {
     id: 9,
     title: "Top 10 in the World",
     category: "Competition",
-    date: "2025-present",
+    date: "2025",
     organization: "LeetCode",
-    description: "Ranked 9th in the world (top 0.02% in the world) in Biweekly Contest 164",
+    description: "Ranked 9th in the world (top 0.02% globally) in Biweekly Contest 164.",
     logo: "leetcode",
-    color: "text-purple",
-    proofLink: "https://leetcode.com/contest/biweekly-contest-164/ranking/?region=global_v2"
-  }
+    color: "text-cyan-500",
+    proofLink: "https://leetcode.com/contest/biweekly-contest-164/ranking/?region=global_v2",
+  },
 ];
 
-const categories = [
-    "All", 
-    "Competition", 
-    "Certification", 
-    "Achievement"
-] as const;
+const CATEGORIES = ["All", "Competition", "Certification", "Achievement"] as const;
+type Category = (typeof CATEGORIES)[number];
 
-export function AchievementsSection() {
-  const [selectedCategory, setSelectedCategory] = useState<typeof categories[number]>("All");
+const logoMap: Record<string, string> = {
+  codeforces: "/codeforces.png",
+  codechef:   "/codechef.png",
+  leetcode:   "/leetcode.png",
+};
 
-const filteredAchievements = achievements.filter(
-  (achievement) => selectedCategory === 'All' || achievement.category === selectedCategory
-);
-
-  const renderIcon = (achievement: Achievement) => {
-    if (achievement.logo === 'codeforces') {
-      return (
-        <Image
-          src="/codeforces.png"
-          alt="Codeforces Logo"
-          width={32} // Specify width (w-8 = 32px)
-          height={32} // Specify height (h-8 = 32px)
-          className="group-hover:scale-110 transition-transform"
-        />
-      );
-    }
-    if (achievement.logo === 'codechef') {
-      return (
-        <Image
-          src="/codechef.png"
-          alt="CodeChef Logo"
-          width={32}
-          height={32}
-          className="group-hover:scale-110 transition-transform"
-        />
-      );
-    }
-    if (achievement.logo === 'leetcode') {
-      return (
-        <Image
-          src="/leetcode.png"
-          alt="LeetCode Logo"
-          width={32}
-          height={32}
-          className="group-hover:scale-110 transition-transform"
-        />
-      );
-    }
-    if (achievement.icon) {
-      const Icon = achievement.icon;
-      return (
-        <Icon
-          className={`w-8 h-8 ${achievement.color} group-hover:scale-110 transition-transform`}
-        />
-      );
-    }
-    return null;
-  };
+function AchievementCard({ achievement }: { achievement: Achievement }) {
+  const logo = achievement.logo ? logoMap[achievement.logo] : null;
 
   return (
-    <section id="achievements" className="py-20">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-            Achievements & Recognition
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            A collection of my accomplishments in competitive programming, certifications, and professional development.
-          </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {categories.map((category) => (
+    <motion.a
+      href={achievement.proofLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="h-full block"
+      whileHover={{ y: -6, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+    >
+      <Card className="h-full cursor-pointer border-border/60 overflow-hidden group transition-all duration-300 hover:border-violet-500/40 hover:shadow-[0_0_30px_rgba(139,92,246,0.2)]">
+        <div className="h-0.5 bg-gradient-to-r from-violet-500 via-cyan-400 to-indigo-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+        <CardHeader className="pb-2">
+          <div className="flex items-start justify-between mb-3">
+            {logo ? (
+              <motion.div whileHover={{ rotate: 10, scale: 1.15 }} transition={{ type: "spring", stiffness: 400 }}>
+                <Image src={logo} alt={achievement.organization} width={36} height={36} className="object-contain" />
+              </motion.div>
+            ) : achievement.icon ? (
+              <motion.div whileHover={{ rotate: 10, scale: 1.15 }} transition={{ type: "spring", stiffness: 400 }}>
+                <achievement.icon className={`w-9 h-9 ${achievement.color}`} />
+              </motion.div>
+            ) : null}
             <Badge
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              className="cursor-pointer px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors"
-              onClick={() => setSelectedCategory(category)}
+              variant="secondary"
+              className="text-xs bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20"
             >
-              {category}
+              {achievement.category}
             </Badge>
+          </div>
+
+          <CardTitle className="text-lg group-hover:text-violet-500 transition-colors duration-200">
+            {achievement.title}
+          </CardTitle>
+
+          <CardDescription className="flex flex-wrap items-center gap-3 text-xs mt-1">
+            <span className="flex items-center gap-1">
+              <Calendar className="w-3 h-3 text-violet-400" />
+              {achievement.date}
+            </span>
+            <span className="flex items-center gap-1">
+              <Building2 className="w-3 h-3 text-cyan-500" />
+              {achievement.organization}
+            </span>
+          </CardDescription>
+        </CardHeader>
+
+        <CardContent className="pt-0">
+          <p className="text-sm text-muted-foreground line-clamp-3 leading-relaxed">
+            {achievement.description}
+          </p>
+        </CardContent>
+      </Card>
+    </motion.a>
+  );
+}
+
+function SectionHeading({ title, subtitle }: { title: string; subtitle: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true });
+  return (
+    <motion.div
+      ref={ref}
+      className="text-center mb-16"
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ type: "spring", damping: 20 }}
+    >
+      <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">{title}</h2>
+      <motion.div
+        className="h-1 w-20 mx-auto rounded-full bg-gradient-to-r from-violet-500 to-cyan-400 mb-4"
+        initial={{ scaleX: 0 }}
+        animate={isInView ? { scaleX: 1 } : {}}
+        transition={{ delay: 0.3, duration: 0.6 }}
+      />
+      <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{subtitle}</p>
+    </motion.div>
+  );
+}
+
+export function AchievementsSection() {
+  const [selectedCategory, setSelectedCategory] = useState<Category>("All");
+
+  const filtered = achievements.filter(
+    (a) => selectedCategory === "All" || a.category === selectedCategory
+  );
+
+  return (
+    <section id="achievements" className="py-20 relative overflow-hidden">
+      <div className="absolute inset-0 grid-bg opacity-40" />
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <SectionHeading
+          title="Achievements & Recognition"
+          subtitle="A collection of my accomplishments in competitive programming, certifications, and professional development."
+        />
+
+        {/* Filter tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-12">
+          {CATEGORIES.map((cat) => (
+            <motion.button
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+              className={`relative px-5 py-2 rounded-full text-sm font-medium transition-colors ${
+                selectedCategory === cat
+                  ? "text-white"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {selectedCategory === cat && (
+                <motion.span
+                  layoutId="filter-pill"
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: "linear-gradient(135deg, #8b5cf6, #06b6d4)" }}
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{cat}</span>
+            </motion.button>
           ))}
         </div>
 
-        {/* Achievements Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredAchievements.map((achievement) => (
-            <a
-              key={achievement.id}
-              href={achievement.proofLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="h-full"
-            >
-              <Card className="cursor-pointer hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-2">
-                    {renderIcon(achievement)}
-                    <Badge variant="secondary" className="text-xs">
-                      {achievement.category}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg group-hover:text-primary transition-colors">
-                    {achievement.title}
-                  </CardTitle>
-                  <CardDescription className="flex items-center space-x-4 text-sm">
-                    <div className="flex items-center space-x-1">
-                      <Calendar className="w-3 h-3" />
-                      <span>{achievement.date}</span>
-                    </div>
-                    <div className="flex items-center space-x-1">
-                      <Building2 className="w-3 h-3" />
-                      <span>{achievement.organization}</span>
-                    </div>
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto">
-                  <p className="text-sm text-muted-foreground line-clamp-3">
-                    {achievement.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </a>
-          ))}
-        </div>
+        {/* Cards grid with AnimatePresence for filter transitions */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={selectedCategory}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            initial="hidden"
+            animate="visible"
+            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+            variants={{
+              hidden: {},
+              visible: { transition: { staggerChildren: 0.07 } },
+            }}
+          >
+            {filtered.map((achievement) => (
+              <motion.div
+                key={achievement.id}
+                className="h-full"
+                variants={{
+                  hidden: { opacity: 0, y: 35, scale: 0.92 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                    transition: { type: "spring", damping: 20, stiffness: 110 },
+                  },
+                }}
+              >
+                <AchievementCard achievement={achievement} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );

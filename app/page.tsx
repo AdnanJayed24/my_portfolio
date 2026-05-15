@@ -14,9 +14,15 @@ const DynamicNavigation = dynamic(() => import('@/components/navigation').then(m
   ssr: false,
 });
 
+const DynamicCinematicIntro = dynamic(
+  () => import('@/components/cinematic-intro').then(mod => ({ default: mod.CinematicIntro })),
+  { ssr: false }
+);
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
+      <DynamicCinematicIntro />
       <DynamicNavigation />
       <DynamicHeroSection />
       <ExperienceSection />
