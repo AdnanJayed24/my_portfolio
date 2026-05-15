@@ -40,6 +40,16 @@ const projects = [
     demoUrl: "https://url-shortener-8g2i.vercel.app/",
     githubUrl: "https://github.com/AdnanJayed24/url-Shortener",
   },
+  {
+    id: 4,
+    title: "Online Judge",
+    description: "A full-stack competitive programming judge platform supporting code submission, real-time verdict, and problem management.",
+    image: "/online-judge.png",
+    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Docker"],
+    category: "Full Stack",
+    demoUrl: "",
+    githubUrl: "https://github.com/AdnanJayed24/OnlineJudge",
+  },
 ];
 
 const CATEGORIES = ["All", "Full Stack", "Frontend", "Backend"];

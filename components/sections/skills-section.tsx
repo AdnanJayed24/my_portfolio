@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code, Database, Wrench, Globe } from 'lucide-react';
+import { Code, Database, Wrench, Globe, Brain } from 'lucide-react';
 
 const skillCategories = [
   {
@@ -19,14 +19,21 @@ const skillCategories = [
     icon: Database,
     color: "text-cyan-500",
     glow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]",
-    skills: ["Node.js", "Express.js", "Django", "PostgreSQL", "MongoDB", "RESTful APIs", "Python", "SQL"],
+    skills: ["Node.js", "Express.js", "Django", "PostgreSQL", "MongoDB", "RESTful APIs", "Python", "SQL", "C/C++", "MySQL", "Redis", "WebSockets"],
   },
   {
     title: "Tools & Technologies",
     icon: Wrench,
     color: "text-indigo-500",
     glow: "hover:shadow-[0_0_30px_rgba(99,102,241,0.2)]",
-    skills: ["Git/GitHub", "VS Code", "Figma", "Vercel"],
+    skills: ["Git/GitHub", "VS Code", "Figma", "Vercel", "Docker", "AWS", "Linux/Ubuntu", "pm2", "Gunicorn"],
+  },
+  {
+    title: "AI / LLM",
+    icon: Brain,
+    color: "text-emerald-500",
+    glow: "hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]",
+    skills: ["Anthropic Claude API", "OpenAI API", "Gemini API", "AI-assisted Development"],
   },
   {
     title: "Other Skills",
@@ -166,7 +173,7 @@ export function SkillsSection() {
           subtitle="A comprehensive overview of my technical skills across various domains."
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <SkillCard key={category.title} category={category} cardIndex={index} />
           ))}
