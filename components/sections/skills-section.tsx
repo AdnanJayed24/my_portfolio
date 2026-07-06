@@ -19,7 +19,7 @@ const skillCategories = [
     icon: Database,
     color: "text-cyan-500",
     glow: "hover:shadow-[0_0_30px_rgba(6,182,212,0.2)]",
-    skills: ["Node.js", "Express.js", "Django", "PostgreSQL", "MongoDB", "RESTful APIs", "Python", "SQL", "C/C++", "MySQL", "Redis", "WebSockets"],
+    skills: ["Node.js", "Express.js", "Django", "Go", "PostgreSQL", "MongoDB", "RESTful APIs", "Python", "SQL", "C/C++", "MySQL", "Redis", "WebSockets"],
   },
   {
     title: "Tools & Technologies",

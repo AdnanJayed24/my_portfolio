@@ -15,12 +15,12 @@ const experiences = [
     location: "Remote",
     duration: "January 2026 - March 2026",
     description:
-      "Developed and maintained frontend interfaces using React Native, ensuring responsive and user-friendly design.",
+      "Shipped frontend pages and admin-side features across 3 production web platforms in the company's portfolio — intellectify.io (mentor-matching for paid 1:1 sessions), arektakichu.com, and arektaboi.com.",
     achievements: [
-      "Employed Git and GitHub for version control",
-      "Established streamlined workflows and code review processes",
+      "Built 3 admin-panel modules — a cash-management interface plus product and order views — in React + Django on arektakichu.com",
+      "Deployed features to production through Git/GitHub PR review with senior engineers, using Docker, AWS, PM2, and Gunicorn",
     ],
-    technologies: ["React Native", "Node.js", "Express.js", "PostgreSQL", "Django", "Git", "GitHub"],
+    technologies: ["React", "Django", "Docker", "AWS", "PM2", "Gunicorn", "Git", "GitHub"],
     certificate: null,
   },
   {
@@ -42,17 +42,16 @@ const experiences = [
   },
   {
     id: 3,
-    company: "Echologyx Ltd",
-    position: "Industrial Attachment",
-    location: "Chattongram, Bangladesh",
+    company: "EchoLogyx Ltd.",
+    position: "Industrial Attachment, AI Product Team",
+    location: "Hybrid",
     duration: "September 2025 - November 2025",
     description:
-      "Completed a focused two-week industrial attachment covering A/B testing methodologies and evaluation metrics for product experiments.",
+      "Developed Next.js interview-flow components and candidate-side UI for Echointerview, an AI-powered recruitment SaaS.",
     achievements: [
-      "Collaborated in a small team to design and develop Echointerview — an AI-based recruitment system using Next.js.",
-      "Presented the group project outcomes and learned practical deployment/testing workflows used in product teams.",
+      "Collaborated with the AI product team on LLM-integrated evaluation features, running A/B tests across product iteration cycles",
     ],
-    technologies: ["Next.js", "React", "TailwindCSS", "REST API", "GitHub", "CI/CD"],
+    technologies: ["Next.js", "React", "AI/LLM Integration", "A/B Testing", "REST API"],
     certificate: null,
   },
   {

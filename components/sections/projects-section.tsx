@@ -11,6 +11,16 @@ import { FaGithub } from 'react-icons/fa';
 
 const projects = [
   {
+    id: 5,
+    title: "CF Analytics",
+    description: "An AI-powered Codeforces analytics platform with weakness analysis, personalized roadmaps, and ranked problem recommendations, backed by a multi-provider (Gemini + Groq) LLM layer with automatic fallback.",
+    image: "/cf-analytics.png",
+    technologies: ["Next.js", "TypeScript", "Express.js", "PostgreSQL", "Prisma", "Recharts"],
+    category: "Full Stack",
+    demoUrl: "https://cfanalytics-frontend.vercel.app/",
+    githubUrl: "https://github.com/greenheaven24/cfanalytics",
+  },
+  {
     id: 1,
     title: "Restaurant",
     description: "A practice project for a restaurant using MealDB API, with full menu browsing and cart functionality.",
@@ -23,11 +33,11 @@ const projects = [
   {
     id: 2,
     title: "EchoChat",
-    description: "A real-time full-stack chat application with WebSocket messaging and JWT authentication.",
+    description: "A real-time chat app with 15+ Socket.IO events, JWT auth, and a Gemini-powered AI assistant with streamed responses and chat summarization.",
     image: "/echochat.png",
-    technologies: ["React", "Node.js", "Express.js", "WebSockets", "PostgreSQL", "JWT"],
+    technologies: ["React", "TypeScript", "Express.js", "Socket.IO", "PostgreSQL", "Prisma"],
     category: "Full Stack",
-    demoUrl: "https://chat-2iuj.vercel.app/",
+    demoUrl: "https://chat-client-three-rho.vercel.app/",
     githubUrl: "https://github.com/AdnanJayed24/Chat",
   },
   {
@@ -43,11 +53,11 @@ const projects = [
   {
     id: 4,
     title: "Online Judge",
-    description: "A full-stack competitive programming judge platform supporting code submission, real-time verdict, and problem management.",
+    description: "A full-stack competitive-programming judge with a Go (Gin) backend, sandboxed Docker-container code execution, and real-time verdict feedback, orchestrating 4 services via Docker Compose.",
     image: "/online-judge.png",
-    technologies: ["React", "Node.js", "PostgreSQL", "Redis", "Docker"],
+    technologies: ["Go", "React", "PostgreSQL", "Redis", "Docker"],
     category: "Full Stack",
-    demoUrl: "",
+    demoUrl: "https://drive.google.com/file/d/1n4hladpGoyzQ9XThgjym4FjzbJC_7-Nh/view?usp=sharing",
     githubUrl: "https://github.com/AdnanJayed24/OnlineJudge",
   },
 ];

@@ -71,7 +71,7 @@ const achievements: Achievement[] = [
     category: "Achievement",
     date: "2025-present",
     organization: "Codeforces",
-    description: "Expert in Codeforces with a max rating of 1869.",
+    description: "Expert in Codeforces with a max rating of 1873.",
     logo: "codeforces",
     color: "text-purple-600",
     proofLink: "https://codeforces.com/profile/green_heaven",
