@@ -225,7 +225,7 @@ export function HeroSection() {
                     }}
                   >
                     <a
-                      href="https://drive.google.com/file/d/1d3bs1PjfVafggV0GYkqWTlsv31I-1301/view?usp=sharing"
+                      href="https://drive.google.com/file/d/1XFO7ZMX3xbjYT2-2SnnYnRoNSY1_0NVZ/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
