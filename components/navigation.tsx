@@ -8,6 +8,7 @@ import { useTheme } from 'next-themes';
 
 const navItems = [
   { href: '#experience',   label: 'Experience' },
+  { href: '#research',     label: 'Research' },
   { href: '#achievements', label: 'Achievements' },
   { href: '#skills',       label: 'Skills' },
   { href: '#projects',     label: 'Projects' },

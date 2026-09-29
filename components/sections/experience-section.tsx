@@ -9,11 +9,27 @@ import Link from "next/link";
 
 const experiences = [
   {
+    id: 0,
+    company: "International Islamic University Chittagong (IIUC)",
+    position: "Assistant Lecturer, Department of Computer Science and Engineering",
+    location: "Chattogram, Bangladesh",
+    duration: "August 2026 - Present",
+    description:
+      "Teach undergraduate Computer Science and Engineering courses through lectures, problem-solving sessions, and academic guidance.",
+    achievements: [
+      "Prepare course materials, assessments, and instructional resources aligned with course learning objectives",
+      "Evaluate student performance through assignments, quizzes, examinations, and other academic assessments",
+      "Contribute to departmental academic activities and support undergraduate students",
+    ],
+    technologies: ["Teaching", "Assessment Design", "Academic Mentoring"],
+    certificate: null,
+  },
+  {
     id: 1,
     company: "Intellectify.io",
     position: "Software Engineer Intern",
     location: "Remote",
-    duration: "January 2026 - March 2026",
+    duration: "January 2026 - April 2026",
     description:
       "Shipped frontend pages and admin-side features across 3 production web platforms in the company's portfolio — intellectify.io (mentor-matching for paid 1:1 sessions), arektakichu.com, and arektaboi.com.",
     achievements: [
@@ -59,7 +75,7 @@ const experiences = [
     company: "Udvash Academic and Admission Care",
     position: "Senior Instructor",
     location: "Chattogram, Bangladesh",
-    duration: "March 2022 - Present",
+    duration: "January 2022 - May 2026",
     description:
       "Provided comprehensive instruction in Mathematics, Physics, Chemistry, and ICT, adapting materials to diverse learning styles.",
     achievements: [

@@ -36,6 +36,13 @@ const skillCategories = [
     skills: ["Anthropic Claude API", "OpenAI API", "Gemini API", "AI-assisted Development"],
   },
   {
+    title: "Machine Learning & Data",
+    icon: Brain,
+    color: "text-amber-500",
+    glow: "hover:shadow-[0_0_30px_rgba(245,158,11,0.2)]",
+    skills: ["PyTorch", "scikit-learn", "NumPy", "Pandas", "Matplotlib", "FedAvg/FedProx", "DP-SGD"],
+  },
+  {
     title: "Other Skills",
     icon: Globe,
     color: "text-pink-500",

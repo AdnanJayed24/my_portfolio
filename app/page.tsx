@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { ExperienceSection } from '@/components/sections/experience-section';
 import { EducationSection } from '@/components/sections/education-section';
+import { ResearchSection } from '@/components/sections/research-section';
 import { SkillsSection } from '@/components/sections/skills-section';
 import { ProjectsSection } from '@/components/sections/projects-section';
 import { AchievementsSection } from '@/components/sections/achievements-section';
@@ -28,6 +29,7 @@ export default function Home() {
       <DynamicHeroSection />
       <ExperienceSection />
       <EducationSection />
+      <ResearchSection />
       <AchievementsSection />
       <SkillsSection />
       <ProjectsSection />

@@ -105,6 +105,50 @@ export function EducationSection() {
                         Chattogram, Bangladesh
                       </span>
                     </div>
+                    <p className="mt-4 text-sm text-muted-foreground">
+                      Merit Scholarship recipient in 7 of 8 completed semesters.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            className="mt-6"
+            initial={{ opacity: 0, y: 35 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ type: "spring", damping: 20, stiffness: 90, delay: 0.12 }}
+            whileHover={{ y: -4 }}
+          >
+            <Card className="border-border/60 overflow-hidden card-glow">
+              <div className="h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-violet-500" />
+              <CardContent className="p-6 sm:p-8">
+                <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center">
+                    <GraduationCap className="w-7 h-7 text-cyan-500" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+                      <div>
+                        <h3 className="text-xl font-bold text-foreground">Higher Secondary Certificate (HSC), Science</h3>
+                        <p className="text-cyan-600 dark:text-cyan-400 font-medium mt-0.5">Bakalia Government College</p>
+                      </div>
+                      <div className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold border border-cyan-400/30 bg-cyan-400/10 text-cyan-600 dark:text-cyan-400">
+                        <Award className="w-3.5 h-3.5" />
+                        GPA: 5.00 / 5.00
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-x-5 gap-y-1.5 mt-3 text-sm text-muted-foreground">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5 text-violet-400" />
+                        2018 - 2020
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <MapPin className="w-3.5 h-3.5 text-cyan-500" />
+                        Chattogram, Bangladesh
+                      </span>
+                    </div>
                   </div>
                 </div>
               </CardContent>
