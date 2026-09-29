@@ -52,7 +52,7 @@ const achievements: Achievement[] = [
     description: "Organized the Chattogram regional round of the National High School Programming Contest.",
     icon: Trophy,
     color: "text-violet-500",
-    proofLink: "https://nhspc.org/",
+    proofLink: "",
   },
   {
     id: 1,
