@@ -183,7 +183,7 @@ export function ContactSection() {
               <div className="flex gap-3">
                 {[
                   { href: "https://github.com/greenheaven24",              icon: FaGithub,  label: "GitHub" },
-                  { href: "https://www.linkedin.com/in/greenheaven2002/", icon: Linkedin, label: "LinkedIn" },
+                  { href: "https://www.linkedin.com/in/adnanjayed2002/", icon: Linkedin, label: "LinkedIn" },
                 ].map(({ href, icon: Icon, label }) => (
                   <motion.a
                     key={label}
