@@ -97,7 +97,7 @@ const itemVariants = {
 
 const socialLinks = [
   { href: "https://github.com/greenheaven24",              Icon: FaGithub, label: "GitHub" },
-  { href: "https://www.linkedin.com/in/greenheaven2002/", Icon: Linkedin, label: "LinkedIn" },
+  { href: "https://www.linkedin.com/in/adnanjayed2002/", Icon: Linkedin, label: "LinkedIn" },
   { href: "mailto:muhammad.adnan.jayed@gmail.com",        Icon: Mail,     label: "Email" },
 ];
 
