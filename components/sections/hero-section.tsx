@@ -155,7 +155,7 @@ export function HeroSection() {
               {/* Profile image */}
               <div className="absolute inset-1.5 rounded-full overflow-hidden z-10">
                 <Image
-                  src="/Adnan.jpeg"
+                  src="/Adnan.jpg"
                   alt="Muhammad Adnan Jayed"
                   fill
                   className="object-cover"
