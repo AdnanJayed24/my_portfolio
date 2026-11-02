@@ -56,7 +56,7 @@ export function ResearchSection() {
                   <FlaskConical className="w-6 h-6 text-violet-500 mt-0.5" />
                   <div>
                     <CardTitle>Multi-Label Federated Learning for Diabetes Complication Prediction Across Heterogeneous Hospitals</CardTitle>
-                    <CardDescription className="mt-2">International Conference on Recent Progresses in Science, Engineering and Technology | Under review</CardDescription>
+                    <CardDescription className="mt-2">International Conference on Recent Progresses in Science, Engineering and Technology</CardDescription>
                   </div>
                 </div>
               </CardHeader>

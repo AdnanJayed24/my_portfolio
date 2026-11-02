@@ -11,7 +11,7 @@ const experiences = [
   {
     id: 0,
     company: "International Islamic University Chittagong (IIUC)",
-    position: "Assistant Lecturer, Department of Computer Science and Engineering",
+    position: "Lecturer, Department of Computer Science and Engineering",
     location: "Chattogram, Bangladesh",
     duration: "August 2026 - Present",
     description:
